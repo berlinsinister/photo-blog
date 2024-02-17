@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const Nav = styled.nav`
   ${({ theme: { layout, devices, isOffers } }) => css`
-    border: 2px solid magenta;
     position: fixed;
     top: 100px;
     left: 50%;

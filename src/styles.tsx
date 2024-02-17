@@ -12,7 +12,6 @@ const enterPage = keyframes`
 
 export const Page = styled.div<IPageProps>`
   ${({ theme: { colors, devices }, isDarkMode }) => css`
-    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,8 +36,6 @@ interface ILayoutProps {
 
 export const Layout = styled.div<ILayoutProps>`
   ${({ theme: { layout, devices }, hasHeight }) => css`
-    border: 2px solid cyan;
-
     /* for mouse icon */
     position: relative;
     max-width: ${layout.sizes.width.main};
