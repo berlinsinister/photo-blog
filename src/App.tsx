@@ -1,6 +1,6 @@
 import useRouter from './router/routes';
 import Nav from './layouts/Nav/Nav';
-import './App.css';
+import * as StyledGlobal from './styles';
 
 function App() {
   const routes = useRouter();
@@ -8,7 +8,10 @@ function App() {
   return (
     <>
       <Nav />
-      {routes}
+
+      <StyledGlobal.Page>
+        <StyledGlobal.Layout>{routes}</StyledGlobal.Layout>
+      </StyledGlobal.Page>
     </>
   );
 }
