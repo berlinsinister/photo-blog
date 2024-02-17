@@ -1,19 +1,21 @@
+import { useLocation } from 'react-router-dom';
 import useRouter from './router/routes';
 import Nav from './layouts/Nav/Nav';
-import * as StyledGlobal from './styles';
+import * as S from './App.styles';
 
-function App() {
+const App = () => {
+  const location = useLocation();
   const routes = useRouter();
 
   return (
     <>
       <Nav />
 
-      <StyledGlobal.Page>
-        <StyledGlobal.Layout>{routes}</StyledGlobal.Layout>
-      </StyledGlobal.Page>
+      <S.Page isDarkMode={location.pathname === '/mystery'}>
+        <S.Layout>{routes}</S.Layout>
+      </S.Page>
     </>
   );
-}
+};
 
 export default App;
