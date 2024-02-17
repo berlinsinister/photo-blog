@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-// import { useDevice } from '../../hooks/useDevice';
+import { useDevice } from '../../hooks/useDevice';
 import { routes } from '../../router/routes';
-// import MobileNav from './MobileNav';
+import MobileNav from '../MobileNav/MobileNav';
 import * as S from './Nav.styles';
 
 const Nav: React.FC = (): JSX.Element => {
@@ -13,11 +13,15 @@ const Nav: React.FC = (): JSX.Element => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  //   const tablet = useDevice('tablet');
+  const tablet = useDevice('tablet');
 
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    /**
+     * @function setNavWidth
+     * @description Function gets the actual widths of nav component and window during resize and sets them in state vars.
+     */
     const handleResize = () => {
       if (navRef.current) setNavWidth(navRef.current.offsetWidth);
       setWidth(window.innerWidth);
@@ -30,6 +34,10 @@ const Nav: React.FC = (): JSX.Element => {
     };
   }, []);
 
+  /**
+   * @description Mobile nav is closed when the user clicks on one of the nav items. Nav items are routes.
+   *              When the user gets redirected to a different route (page) the mobile nav should close.
+   */
   useEffect(() => {
     if (isMobileNavVisible) setIsMobileNavVisible(false);
   }, [location.pathname]);
@@ -43,42 +51,29 @@ const Nav: React.FC = (): JSX.Element => {
         isMystery: location.pathname === '/mystery',
       }}
     >
-      {/* {isMobileNavVisible && (
+      {isMobileNavVisible && (
         <MobileNav setIsMobileNavVisible={setIsMobileNavVisible} />
-      )} */}
+      )}
 
       <S.Nav ref={navRef}>
         <S.Logo onClick={() => navigate('/')}>in focus</S.Logo>
 
         <S.NavLinksWrapper>
-          {/* {width <= tablet ? (
+          {width <= tablet ? (
             <S.NavLink isActive onClick={() => setIsMobileNavVisible(true)}>
               menu
             </S.NavLink>
           ) : (
-            routes.map(({ to, name }) => (
+            routes.map(({ path, label }) => (
               <S.NavLink
-                key={to}
-                isActive={location.pathname === to}
-                onClick={() => navigate(to)}
+                key={path}
+                isActive={location.pathname === path}
+                onClick={() => navigate(path)}
               >
-                {name}
+                {label}
               </S.NavLink>
             ))
-          )} */}
-
-          {/* <S.NavLink onClick={() => console.log('temp nav link')}>
-            temp nav link
-          </S.NavLink> */}
-          {routes.map(({ path, label }) => (
-            <S.NavLink
-              key={label}
-              isActive={location.pathname === path}
-              onClick={() => navigate(path)}
-            >
-              {label}
-            </S.NavLink>
-          ))}
+          )}
         </S.NavLinksWrapper>
       </S.Nav>
     </ThemeProvider>

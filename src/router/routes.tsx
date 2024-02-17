@@ -1,7 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 import PageHome from '../pages/PageHome/PageHome';
-// import Home from "../pages/home/Home";
-// import Blog from "../pages/blog/Blog";
+import PageBlog from '../pages/PageBlog/PageBlog';
 // import Offers from "../pages/offers/Offers";
 // import Events from "../pages/events/Events";
 // import Mystery from "../pages/mystery/Mystery";
@@ -15,7 +14,7 @@ interface IRoute {
 
 export const routes: IRoute[] = [
   { path: '/', label: 'collections', element: <PageHome /> },
-  { path: '/blog', label: 'blog', element: <PageHome /> },
+  { path: '/blog', label: 'blog', element: <PageBlog /> },
   { path: '/offers', label: 'offers', element: <PageHome /> },
   { path: '/events', label: 'events', element: <PageHome /> },
   { path: '/mystery', label: 'mystery', element: <PageHome /> },
