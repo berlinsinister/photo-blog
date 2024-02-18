@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { useDevice } from '../../hooks/useDevice';
 import { routes } from '../../router/routes';
+import { ERoute } from '../../types/enums';
 import MobileNav from '../MobileNav/MobileNav';
 import * as S from './Nav.styles';
 
@@ -46,9 +47,9 @@ const Nav: React.FC = (): JSX.Element => {
     <ThemeProvider
       theme={{
         navWidth,
-        isBlog: location.pathname === '/blog',
-        isOffers: location.pathname === '/offers',
-        isMystery: location.pathname === '/mystery',
+        isBlog: location.pathname === ERoute.BLOG,
+        isOffers: location.pathname === ERoute.OFFERS,
+        isMystery: location.pathname === ERoute.MYSTERY,
       }}
     >
       {isMobileNavVisible && (

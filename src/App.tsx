@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import useRouter from './router/routes';
+import { ERoute } from './types/enums';
 import Nav from './layouts/Nav/Nav';
 import * as S from './App.styles';
 
@@ -11,7 +12,7 @@ const App = () => {
     <>
       <Nav />
 
-      <S.Page isDarkMode={location.pathname === '/mystery'}>
+      <S.Page isDarkMode={location.pathname === ERoute.MYSTERY}>
         <S.Layout>{routes}</S.Layout>
       </S.Page>
     </>
