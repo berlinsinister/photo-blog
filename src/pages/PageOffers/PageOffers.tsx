@@ -56,36 +56,40 @@ const PageOffers: React.FC = (): JSX.Element => {
         </S.Photo>
 
         <S.OffersWrapper>
-          <S.Title>What we offer</S.Title>
-          <S.Description>
-            We offer a wide variety of professional services in following
-            categories:
-          </S.Description>
+          <S.OffersHeading>
+            <S.Title>What we offer</S.Title>
+            <S.Description>
+              We offer a wide variety of professional services in following
+              categories:
+            </S.Description>
+          </S.OffersHeading>
 
           {width > tablet ? (
-            offers.map((offer, i) => (
-              <S.OfferItemWrapper>
-                {active === i && (
-                  <S.ArrowWrapper>
-                    <Arrow
-                      sizeBig="7px"
-                      sizeSmall="5px"
-                      color={theme.colors.primary.main}
-                      isRight
-                    />
-                  </S.ArrowWrapper>
-                )}
+            <S.OffersList>
+              {offers.map((offer, i) => (
+                <S.OfferItemWrapper>
+                  {active === i && (
+                    <S.ArrowWrapper>
+                      <Arrow
+                        sizeBig="7px"
+                        sizeSmall="5px"
+                        color={theme.colors.primary.main}
+                        isRight
+                      />
+                    </S.ArrowWrapper>
+                  )}
 
-                <S.OfferItem
-                  key={offer.id}
-                  idx={i}
-                  isActive={active === i}
-                  onClick={() => setActive(i)}
-                >
-                  {offer.label}
-                </S.OfferItem>
-              </S.OfferItemWrapper>
-            ))
+                  <S.OfferItem
+                    key={offer.id}
+                    idx={i}
+                    isActive={active === i}
+                    onClick={() => setActive(i)}
+                  >
+                    {offer.label}
+                  </S.OfferItem>
+                </S.OfferItemWrapper>
+              ))}
+            </S.OffersList>
           ) : (
             <S.OfferItemWrapper>
               <S.ArrowWrapper

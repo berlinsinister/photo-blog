@@ -2,22 +2,14 @@ import styled, { css, keyframes } from 'styled-components';
 import { scrollbar } from '../../styles';
 
 export const ContentWrapper = styled.div`
-  ${({ theme: { layout, devices } }) => css`
-    max-height: calc(${layout.sizes.height.main});
-    overflow: hidden;
-
-    @media ${devices.tablet} {
-      max-height: none;
-      height: 100vh;
-      overflow: auto;
-      ${scrollbar()};
-    }
-  `};
+  height: 100%;
+  overflow: hidden;
 `;
 
 export const Main = styled.main`
   ${({ theme: { layout, devices } }) => css`
     display: flex;
+    height: 100%;
 
     @media ${devices.tablet} {
       flex-direction: column;
@@ -41,7 +33,7 @@ export const Photo = styled.div<IPhotoProps>`
   ${({ theme: { layout, devices }, isFirstRender, image }) => css`
     position: relative;
     width: 70%;
-    height: calc(${layout.sizes.height.main});
+    height: 100%;
     background-image: url(${image});
     background-size: cover;
     background-repeat: no-repeat;
@@ -56,10 +48,6 @@ export const Photo = styled.div<IPhotoProps>`
 
     @media ${devices.tablet} {
       width: 100%;
-      height: 450px;
-    }
-
-    @media ${devices.tablet} {
       height: 350px;
     }
   `}
@@ -89,19 +77,10 @@ export const Navigation = styled.div`
   }
 `;
 
-export const PageNum = styled.p`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 18px;
-  font-weight: 300;
-  color: #fff;
-  opacity: 1;
-`;
-
 export const OffersWrapper = styled.div`
   ${({ theme: { layout, devices } }) => css`
+    display: flex;
+    flex-direction: column;
     width: 30%;
     margin-top: ${layout.offsets.margin.main};
 
@@ -115,6 +94,8 @@ export const OffersWrapper = styled.div`
     }
   `};
 `;
+
+export const OffersHeading = styled.div``;
 
 const enterTitle = keyframes`
   to {
@@ -157,7 +138,7 @@ export const Description = styled.p`
     color: ${colors.neutral.main};
     opacity: 0;
     transform: translateY(20px);
-    animation: ${enterDescription} 0.4s ease-out 1.7s forwards; /*2.7*/
+    animation: ${enterDescription} 0.4s ease-out 1.7s forwards;
 
     @media ${devices.tablet} {
       margin: 20px auto 0;
@@ -165,6 +146,13 @@ export const Description = styled.p`
       animation: none;
     }
   `};
+`;
+
+export const OffersList = styled.div`
+  flex-grow: 1;
+  height: 0;
+  overflow-y: scroll;
+  ${scrollbar()};
 `;
 
 export const OfferItemWrapper = styled.div`

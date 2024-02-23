@@ -11,10 +11,10 @@ export const ContentWrapper = styled.div`
 export const Main = styled.main`
   ${({ theme: { layout, devices } }) => css`
     display: flex;
+    height: 100%;
 
     @media ${devices.tablet} {
       flex-direction: column;
-      height: 100%;
     }
   `};
 `;
@@ -37,7 +37,7 @@ const enterPhoto = (
 export const Photo = styled.div`
   ${({ theme: { layout, devices } }) => css`
     width: 50%;
-    height: calc(100vh - 200px);
+    height: 100%;
     background-image: url('https://drscdn.500px.org/photo/195517091/q%3D80_m%3D1500/v2?sig=f8a61ed6af679136a53b09a0d1c52f6618c748104f4b8cb3bfc82c389a5a6a68');
     background-size: cover;
     background-repeat: no-repeat;
