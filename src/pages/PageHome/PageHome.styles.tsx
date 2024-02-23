@@ -3,25 +3,22 @@ import { scrollbar } from '../../styles';
 
 const _ = undefined;
 
+export const ContentWrapper = styled.div`
+  position: relative;
+  height: 100%;
+`;
+
 export const ScrollContent = styled.div`
   ${({ theme: { layout, devices } }) => css`
-    max-height: calc(${layout.sizes.height.main});
+    height: 100%;
     margin-left: 120px;
     overflow-y: scroll;
     direction: rtl;
     /* related to main's margin-top */
     ${scrollbar(_, layout.offsets.margin.scroll)}
 
-    /* border: 1px solid lime; */
-
     @media ${devices.laptop} {
       margin-left: 50px;
-    }
-
-    @media ${devices.tablet} {
-      max-height: none;
-      height: 100vh;
-      /* margin-left: 80px; */
     }
 
     @media ${devices.mobile} {
@@ -39,10 +36,6 @@ export const MouseWrapper = styled.div`
     @media ${devices.laptop} {
       left: 25px;
     }
-
-    /* @media ${devices.tablet} {
-      left: 55px;
-    } */
 
     @media ${devices.mobile} {
       display: none;
@@ -72,8 +65,6 @@ export const Main = styled.main`
     margin-top: ${layout.offsets.margin.scroll};
     padding: 0 ${layout.offsets.padding.main};
     direction: ltr;
-
-    /* border: 1px solid blue; */
 
     @media ${devices.laptop} {
       padding: 0 30px;

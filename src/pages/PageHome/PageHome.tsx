@@ -57,22 +57,24 @@ const PageHome: React.FC = (): JSX.Element => {
 
   // {/* <Motto /> */}
   return (
-    <S.ScrollContent ref={scrollContentRef}>
-      <S.MouseWrapper>
-        <Mouse />
-        <S.ScrollText>scroll</S.ScrollText>
-      </S.MouseWrapper>
-      <S.Main>
-        {photos.map((photo: IPhoto, i: number) => (
-          <Photo
-            key={photo.id}
-            number={i + 1}
-            photoData={photo}
-            isFirst={i === 0}
-          />
-        ))}
-      </S.Main>
-    </S.ScrollContent>
+    <S.ContentWrapper>
+      <S.ScrollContent ref={scrollContentRef}>
+        <S.MouseWrapper>
+          <Mouse />
+          <S.ScrollText>scroll</S.ScrollText>
+        </S.MouseWrapper>
+        <S.Main>
+          {photos.map((photo: IPhoto, i: number) => (
+            <Photo
+              key={photo.id}
+              number={i + 1}
+              photoData={photo}
+              isFirst={i === 0}
+            />
+          ))}
+        </S.Main>
+      </S.ScrollContent>
+    </S.ContentWrapper>
   );
 };
 

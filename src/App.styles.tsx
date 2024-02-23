@@ -30,26 +30,16 @@ export const Page = styled.div<IPageProps>`
   `};
 `;
 
-interface ILayoutProps {
-  hasHeight?: boolean;
-}
-
-export const Layout = styled.div<ILayoutProps>`
-  ${({ theme: { layout, devices }, hasHeight }) => css`
-    /* for mouse icon */
-    position: relative;
+export const Layout = styled.div`
+  ${({ theme: { layout, devices } }) => css`
     max-width: ${layout.sizes.width.main};
     width: 100%;
+    height: calc(100vh - 200px);
     background-color: #fff;
     box-shadow: 0 20px 20px -10px rgba(0, 0, 0, 0.2);
-    ${hasHeight &&
-    css`
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 200px);
-      border: 2px solid royalblue;
-    `};
+
+    @media ${devices.tablet} {
+      height: 100vh;
+    }
   `};
 `;
