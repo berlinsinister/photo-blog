@@ -12,15 +12,11 @@ export const ContentWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(${layout.sizes.height.main});
+    height: 100%;
     font-weight: 300;
     background-color: #fff;
     color: ${colors.primary.main};
     animation: ${enterContentWrapper} 0.7s ease-in-out forwards;
-
-    @media ${devices.tablet} {
-      height: 100vh;
-    }
   `};
 `;
 
@@ -69,6 +65,7 @@ const enterComingSoon = keyframes`
   50% {
     opacity: 0.3;
   }
+
   100% {
     opacity: 1;
     transform: translate(0);
