@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { useDevice } from '../../hooks/useDevice';
 import { routes } from '../../router/routes';
-import { ERoute } from '../../types/enums';
+import { ERoute, EBreakpoints } from '../../types/enums';
 import MobileNav from '../MobileNav/MobileNav';
 import * as S from './Nav.styles';
 
@@ -14,7 +13,6 @@ const Nav: React.FC = (): JSX.Element => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const tablet = useDevice('tablet');
 
   const navRef = useRef<HTMLElement>(null);
 
@@ -60,7 +58,7 @@ const Nav: React.FC = (): JSX.Element => {
         <S.Logo onClick={() => navigate('/')}>in focus</S.Logo>
 
         <S.NavLinksWrapper>
-          {width <= tablet ? (
+          {width <= EBreakpoints.TABLET ? (
             <S.NavLink isActive onClick={() => setIsMobileNavVisible(true)}>
               menu
             </S.NavLink>

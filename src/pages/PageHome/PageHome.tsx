@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDevice } from '../../hooks/useDevice';
 import Photo from './components/Photo';
 import Mouse from '../../components/icons/Mouse';
 // import Motto from "./components/Motto";
@@ -9,8 +8,6 @@ import { IPhoto } from '../../types/photo';
 
 const PageHome: React.FC = (): JSX.Element => {
   // const [distanceForDevice, setDistanceForDevice] = useState<number>(200);
-
-  // const tablet = useDevice("tablet");
 
   const scrollContentRef = useRef<HTMLDivElement>(null);
 

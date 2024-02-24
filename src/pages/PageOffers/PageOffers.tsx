@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDevice } from '../../hooks/useDevice';
 import Arrow from '../../components/icons/Arrow';
 import * as S from './PageOffers.styles';
 import { offers } from '../../db/offers';
 import theme from '../../themes/theme';
+import { EBreakpoints } from '../../types/enums';
 
 const PageOffers: React.FC = (): JSX.Element => {
   const [active, setActive] = useState<number>(0);
   const [width, setWidth] = useState<number>(window.innerWidth);
-
-  const tablet = useDevice('tablet');
 
   const isFirstRenderRef = useRef<boolean>(true);
 
@@ -64,7 +62,7 @@ const PageOffers: React.FC = (): JSX.Element => {
             </S.Description>
           </S.OffersHeading>
 
-          {width > tablet ? (
+          {width > EBreakpoints.TABLET ? (
             <S.OffersList>
               {offers.map((offer, i) => (
                 <S.OfferItemWrapper>
