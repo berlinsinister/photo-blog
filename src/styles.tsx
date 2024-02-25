@@ -12,7 +12,7 @@ export const scrollbar = (
               width: 5px;
             `
           : css`
-              height: 1px;
+              height: 5px;
             `}
       }
 

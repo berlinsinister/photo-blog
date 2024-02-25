@@ -17,23 +17,21 @@ const PageEvents: React.FC = (): JSX.Element => {
   };
 
   return (
-    <>
-      <S.ContentWrapper>
-        <S.Main>
-          <S.Title>Upcoming events</S.Title>
-          <S.CardsWrapper onWheel={handleWheel} ref={cardsWrapperRef}>
-            {events.map((event, i) => (
-              <Card key={event.id} eventData={event} number={i + 1} />
-            ))}
-          </S.CardsWrapper>
-        </S.Main>
-      </S.ContentWrapper>
+    <S.ContentWrapper>
+      <S.Main>
+        <S.Title>Upcoming events</S.Title>
+        <S.ScrollContent onWheel={handleWheel} ref={cardsWrapperRef}>
+          {events.map((event, i) => (
+            <Card key={event.id} eventData={event} number={i + 1} />
+          ))}
+        </S.ScrollContent>
+      </S.Main>
 
       <S.MouseWrapper>
         <Mouse direction="x" />
         <S.ScrollText>scroll</S.ScrollText>
       </S.MouseWrapper>
-    </>
+    </S.ContentWrapper>
   );
 };
 

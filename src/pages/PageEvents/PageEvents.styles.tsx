@@ -2,27 +2,20 @@ import styled, { css } from 'styled-components';
 import { scrollbar } from '../../styles';
 
 export const ContentWrapper = styled.div`
-  ${({ theme: { layout, devices } }) => css`
-    height: calc(${layout.sizes.height.main});
-    overflow: hidden;
+  position: relative;
+  height: 100%;
+  padding: 140px 50px 70px 120px;
 
-    @media ${devices.tablet} {
-      height: 100vh;
-    }
-  `};
+  border: 2px solid magenta;
 `;
 
 export const Main = styled.main`
   ${({ theme: { colors, layout, devices } }) => css`
-    margin: ${layout.offsets.margin.main} 50px 0 120px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
-    @media ${devices.laptop} {
-      margin: ${layout.offsets.margin.main} 50px 0 50px;
-    }
-
-    @media ${devices.tablet} {
-      height: calc(100vh - ${layout.offsets.margin.main} - 50px);
-    }
+    // border: 4px solid lime;
   `};
 `;
 
@@ -40,27 +33,24 @@ export const Title = styled.h2`
   `};
 `;
 
-export const CardsWrapper = styled.div`
+export const ScrollContent = styled.div`
   ${({ theme: { devices } }) => css`
-    display: flex;
-    gap: 30px;
-    padding-bottom: 50px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    ${scrollbar('x')};
+    // border: 2px solid darkblue;
 
-    @media ${devices.tablet} {
-      flex-direction: column;
-      overflow-y: scroll;
-      overflow-x: hidden;
-    }
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    padding-bottom: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    ${scrollbar('x')};
   `};
 `;
 
 export const MouseWrapper = styled.div`
   ${({ theme: { devices } }) => css`
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 120px;
 
     @media ${devices.laptop} {

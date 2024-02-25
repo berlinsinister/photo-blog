@@ -1,53 +1,33 @@
 import styled, { css, keyframes } from 'styled-components';
 
-const enterWrapper = keyframes`
+const enterCardWrapper = keyframes`
   to {
     opacity: 1;
     transform: translateY(0);
   }
 `;
 
-export const Wrapper = styled.div`
-  ${({ theme: { devices, number } }) => css`
-    position: relative;
-    min-width: 30%;
-    /* for responsive height */
-    padding-top: 37%;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: ${enterWrapper} 0.4s ease-out ${number * 0.2}s forwards;
-
-    @media ${devices.tablet} {
-      min-width: 0;
-      width: 80%;
-      padding-top: 250px;
-    }
-  `}
-`;
-
-export const ContentWrapper = styled.div`
-  ${({ theme: { colors, devices } }) => css`
-    /* to override padding-top % from wrapper div */
-    position: absolute;
-    top: 0;
-    left: 0;
+export const CardWrapper = styled.div`
+  ${({ theme: { colors, devices, number } }) => css`
+    flex: 0 0 240px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: 30px;
     border: 1px solid ${colors.neutral.lightest};
     border-bottom: 3px solid ${colors.primary.main};
+    opacity: 0;
+    transform: translateY(50px);
+    animation: ${enterCardWrapper} 0.4s ease-out ${number * 0.2}s forwards;
 
+    // what is this description for?
     /* for smooth opacity change while scrolling up / down */
-    /** parent element's opacity is set by animation 'enterWrapper'
-      and isn't overridden by js while scrolling.
-      that's why this feature (opacity change while scrolling)
-      was moved to this element.
-    */
+    /* parent element's opacity is set by animation 'enterWrapper'
+     * and isn't overridden by js while scrolling.
+     * that's why this feature (opacity change while scrolling)
+     * was moved to this element.
+     */
 
-    transition: 0.4s ease;
+    transition: 0.4s ease; // ?
 
     &:hover {
       .day-first {
@@ -60,20 +40,24 @@ export const ContentWrapper = styled.div`
         transform: translateY(0);
       }
 
-      .info {
+      .month {
+        transform: translateY(10px);
       }
     }
   `}
 `;
 
-export const Date = styled.div``;
+export const Date = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const DayWrapper = styled.div`
   position: relative;
-  height: 70px;
+  width: 80px;
+  height: 55px;
   overflow: hidden;
-
-  border: 1px solid blue;
+  border: 2px solid blue;
 `;
 
 export const DayFirst = styled.p`
@@ -84,10 +68,9 @@ export const DayFirst = styled.p`
     display: flex;
     align-items: center;
     height: 100%;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 500;
     color: ${colors.neutral.primary};
-    border: 1px solid lime;
     transition: 0.4s ease;
   `}
 `;
@@ -107,11 +90,15 @@ export const Month = styled.p`
     font-weight: 400;
     text-transform: uppercase;
     color: ${colors.neutral.primary};
+    // border: 2px solid red;
+    transition: 0.4s ease;
   `}
 `;
 
 export const Info = styled.div`
   ${({ theme: { colors, devices } }) => css`
+    // border: 1px solid red;
+    font-weight: 300;
     color: ${colors.neutral.primary};
   `}
 `;
@@ -119,7 +106,8 @@ export const Info = styled.div`
 export const Title = styled.h3`
   ${({ theme: { colors, devices } }) => css`
     margin-bottom: 20%;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 300;
     text-transform: uppercase;
 
     @media ${devices.laptop} {
